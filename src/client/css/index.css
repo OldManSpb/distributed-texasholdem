@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text&family=Holtwood+One+SC&display=swap');
+
 @font-face {
   font-family: Metropolis-Medium;
   src: url("font/Metropolis-Medium.otf"),
@@ -9,24 +12,26 @@
   font-weight: bold;
   src: url("font/Metropolis-Bold.otf"),
     url("font/Metropolis-Bold.otf") format("opentype");
-}
+}*
+
+
 
 #mainContent {
   height: 100%;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 2%;
+  margin-right: 2%;
 }
 
 #gameDiv {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 2%;
+  margin-right: 2% ;
   min-height: 95vh;
 }
 
 html,
 body,
 .login-box {
-  background: #2e64bc;
+  background: #44705B;
   height: 95%;
 }
 
@@ -36,12 +41,18 @@ body,
 }
 
 body {
-  font-family: Metropolis-Medium;
+  font-family: 'Golos Text', sans-serif;
 }
 
 code {
   font-size: 24px;
   background-color: #ebebeb;
+}
+
+.header-wrapper {
+  color:#537747;
+  max-width: 1920px;
+  max-height: 123px;
 }
 
 .playingCard_black {
@@ -58,8 +69,8 @@ code {
 }
 
 #usernamesMoney {
-  font-size: 30px;
-  min-height: 219px;
+  font-size: 10%;
+  min-height: 20%;
 }
 
 .playingCard_red {
@@ -81,7 +92,7 @@ code {
 }
 
 .card-content {
-  font-size: 16px;
+  font-size: 110%;
 }
 
 .theirTurn {
@@ -145,6 +156,66 @@ code {
 }
 
 .toast {
-  position: relative;
+  position: absolute;
   z-index: -1 !important;
 }
+
+
+
+.header-name{
+  color:#E1D0A4;
+  background-color: #537747;
+  margin: 0px;
+  font-family: 'Holtwood One SC', serif;
+  font-weight: 400;
+  padding:2%;
+}
+
+#gameDiv{
+  margin:0px;
+}
+
+.page-footer{
+  background-color: #537747;
+}
+.card-content{
+  font-size: 150%;
+}
+.hd-reg{
+  font-size: 40px;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 1000px) {
+  .header-name {
+    font-size: 600%;
+  }
+  .page-footerr{
+    height:10%
+    
+  }
+
+  .reg-card{
+    height:36%;
+    width: 70%;
+    
+    
+  }
+  .card-content{
+      font-size: 250%;
+  }
+  .reg-button{
+  
+    scale:140%;
+    margin-left:15%;
+    margin-right:20%;
+    font-size: larger;
+    left: -55px;
+  }
+  .start-card{
+    top:1000%;
+  }
+  
+}
+
+

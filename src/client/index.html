@@ -2,8 +2,9 @@
 <html>
 
 <head>
-	<link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
 	<link href="css/index.css" type="text/css" rel="stylesheet" media="screen,projection" />
+	<link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+	
 	<meta property="og:image" content="./img/pokerBanner.png" />
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -11,22 +12,33 @@
 	<link rel="manifest" href="/site.webmanifest">
 	<meta name="msapplication-TileColor" content="#da532c">
 	<meta name="theme-color" content="#ffffff">
-	<title>Texas Hold 'Em - Distributed</title>
+	<title>Техасский холдем - Распределение</title>
 </head>
 
 <body>
 	<header>
-		<div class="navbar-fixed" id="navbar-ptwu">
+		<!--<div class="navbar-fixed" id="navbar-ptwu">
 			<nav class="grey darken-4" role="navigation" id="navbar">
 				<a href="#" class="brand-logo center"><img class="responsive-img hover-item-2"
 						src="https://i.imgur.com/aICJn1m.png" width="64" height="64"></img></a>
 			</nav>
-		</div>
+		</div>-->
+		<h4 class="header-name center s12 m5 ">Texas Holdem</h4>
 	</header>
+	
 	<div id="gameDiv">
-		<h4 class="white-text">Texas Hold 'Em Game</h4>
-		<div class="row">
-			<div class="col s12 m3">
+		
+		<div class="col">
+			<div class="col s12 l7 center-align">
+				<div class="card green darken-2">
+					<div class="card-content white-text">
+						<span id="table-title" class="card-title"></span>
+
+						<div id="communityCards"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 l3">
 				<div id="playerInformationCard" class="card green darken-2">
 					<div class="card-content white-text">
 						<span class="card-title" id="usernamesCards"></span>
@@ -34,7 +46,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col s12 m2">
+			<div class="col s4">
 				<div class="card green darken-2">
 					<div class="card-content white-text center-align">
 						<span class="card-title center-align" id="usernamesMoney"></span>
@@ -56,85 +68,75 @@
 					</div>
 				</div>
 			</div>
-			<div class="col s12 m7">
-				<div class="card green darken-2">
-					<div class="card-content white-text">
-						<span id="table-title" class="card-title"></span>
-
-						<div id="communityCards"></div>
-					</div>
-				</div>
-			</div>
+			
 		</div>
-		<div class="row">
+		<div class="col">
 			<div id="opponentCards"></div>
 		</div>
 	</div>
+	
 	<div id="mainContent">
+		
 		<div class=" valign-wrapper row login-box">
-			<div class="col card hoverable s12 m4">
+			<div class="reg-card amber lighten-5  col card hoverable s11 l5 ">
 				<form>
 					<div class="card-content">
-						<span class="card-title black-text">Texas Hold &apos;Em Poker - Distributed</span>
-						<p>Welcome to Texas Hold &apos;Em Poker! Host a game and give the code to friends so they can join and play.
+						<h3 class="hd-reg">Техасский холдем - Распределение</h3>
+						<p>Добро пожаловать в Техасский Холдем Покер! Создайте игру и дайте код вашим друзьям, чтобы они могли присоедениться и играть.
 						</p>
 					</div>
-					<div class="card-action center-align">
-						<a id="hostButton" class="btn-large waves-effect waves-light indigo darken-3 white-text modal-trigger"
-							href="#hostModal">Host
-							Game</a>
-						<a id="joinButton" class="btn-large waves-effect waves-light indigo darken-3 white-text modal-trigger"
-							href="#joinModal">Join
-							Game</a>
+					<div class="reg-buttons card-action center-align">
+						<a id="hostButton" class="reg-button btn-large amber waves-effect waves-light black-text modal-trigger"
+							href="#hostModal">Создать игру</a>
+						<a id="joinButton" class="reg-button btn-large amber waves-effect waves-light black-text modal-trigger"
+							href="#joinModal">Присоедениться к игре</a>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-	<div id="hostModal" class="modal">
+	<div id="hostModal" class="start-card modal amber lighten-5">
 		<div class="modal-content">
-			<h4>Host Game</h4>
+			<h4>Создать игру</h4>
 			<div id="hostModalContent">
-				<p>Enter your name, and then we'll give you a code which you can give to your friends as the host.</p>
+				<p>Введите своё имя, чтобы получить код, с помощью которого ваши друзья смогут присоедениться к игре.</p>
 				<div class="input-field col s12">
-					<label for="name">Name</label>
+					<label for="name">Имя</label>
 					<input type="text" name="name" id="hostName-field" required />
 				</div>
 				<button onclick=beginHost() type="submit"
-					class="waves-effect waves-light indigo darken-3 white-text btn-flat">Get
-					Code</button>
+					class="waves-effect waves-light amber black-text btn-flat">Получить код</button>
 			</div>
 			<div id="playersNames"></div>
 			<div id="startGameArea"></div>
 		</div>
-		<div class="modal-footer">
-			<a class="modal-close waves-effect waves-light btn-flat">CLOSE</a>
+		<div class="modal-footer amber lighten-5">
+			<a class="modal-close waves-effect waves-light btn-flat">ЗАКРЫТЬ</a>
 		</div>
 	</div>
 	</div>
 
 	<div id="joinModal" class="modal">
 		<div class="modal-content">
-			<h4>Join Game</h4>
+			<h4>Присоедениться к игре</h4>
 			<div id="joinModalContent">
-				<p>Enter the your name and the code provided by the host to join their room:</p>
+				<p>Введить своё имя и код создателя игры:</p>
 				<div class="input-field col s12">
-					<label for="name">Name</label>
+					<label for="name">Имя</label>
 					<input type="text" name="name" id="joinName-field" required="required" />
 				</div>
 				<div class="input-field col s12">
-					<label for="code">Code</label>
+					<label for="code">Код</label>
 					<input type="text" name="code" id="code-field" required="required" />
 				</div>
 				<button onclick=joinRoom() type="submit"
-					class="waves-effect waves-light indigo darken-3 white-text btn-flat">Join
-					Game</button>
+					class="waves-effect waves-light amber black-text btn-flat">Присоедениться к игре</button>
 			</div>
 			<div id="playersNamesJoined"></div>
 			<div id="startGameAreaDisconnectSituation"></div>
 		</div>
 		<div class="modal-footer">
-			<a href="#!" class="modal-close waves-effect waves-light btn-flat">CLOSE</a>
+			<a href="#!" class="modal-close waves-effect waves-light btn-flat">ЗАКРЫТЬ</a>
 		</div>
 	</div>
 
@@ -180,9 +182,9 @@
 			<a href="#!" class="modal-close waves-effect waves-light btn-flat">CLOSE</a>
 		</div>
 	</div>
-	<footer class="page-footer white">
-		<div class="container footer-c">
-			<b>© 2023 - Kotovsky</b><br><br>
+	<footer class="page-footer ">
+		<div class="container center footer-c">
+			<h5>© 2023 - Kotovsky</h5><br><br>
 	</footer>
 
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>

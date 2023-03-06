@@ -1,3 +1,53 @@
+function Unloader(){
+
+  var o = this;
+  
+  this.unload = function(evt)
+  {
+      var message = "Данные не будут сохранены после обновления страницы или перехода";
+          if($("#taskname").val() != "" || $(".note-editable").text()) { // проверка моих полей на пустоту
+              if (typeof evt == "undefined") {
+                  evt = window.event;
+              }
+              if (evt) {
+                  evt.returnValue = message;
+              }
+              return message;
+          }
+      }
+  
+      this.resetUnload = function()
+      {
+          $(window).off('beforeunload', o.unload);
+  
+           setTimeout(function(){
+              $(window).on('beforeunload', o.unload);
+          }, 2000);
+      }
+  
+      this.init = function()
+      {
+  
+          $(window).on('beforeunload', o.unload);
+  
+          $('a').on('click', function(){o.resetUnload});
+          $(document).on('submit', 'form', function(){o.resetUnload});
+          $(document).on('keydown', function(event){
+              if((event.ctrlKey && event.keyCode == 116) || event.keyCode == 116){
+                  o.resetUnload;
+              }
+          });
+      }
+      this.init();
+  }
+  
+  $(function(){
+      if(typeof window.obUnloader != 'object')
+      {
+          window.obUnloader = new Unloader();
+      }
+  })
+
 $(document).ready(function () {
   $('#gameDiv').hide();
   $('.modal-trigger').leanModal();
@@ -17,7 +67,7 @@ socket.on('hostRoom', function (data) {
       $('#hostModalContent').html(
         '<h5>Code:</h5><code>' +
           data.code +
-          '</code><br /><h5>Warning: you have too many players in your room. Max is 11.</h5><h5>Players Currently in My Room</h5>'
+          '</code><br /><h5>Предупреждение: слишком много участников в комнате. Максимально 11.</h5><h5>Игроки в моей комнате</h5>'
       );
       $('#playersNames').html(
         data.players.map(function (p) {
@@ -28,7 +78,7 @@ socket.on('hostRoom', function (data) {
       $('#hostModalContent').html(
         '<h5>Code:</h5><code>' +
           data.code +
-          '</code><br /><h5>Players Currently in My Room</h5>'
+          '</code><br /><h5>Игроки в моей комнате</h5>'
       );
       $('#playersNames').html(
         data.players.map(function (p) {
@@ -38,13 +88,13 @@ socket.on('hostRoom', function (data) {
       $('#startGameArea').html(
         '<br /><button onclick=startGame(' +
           data.code +
-          ') type="submit" class= "waves-effect waves-light green darken-3 white-text btn-flat">Start Game</button >'
+          ') type="submit" class= "waves-effect waves-light green darken-3 white-text btn-flat">Начать игру</button >'
       );
     } else {
       $('#hostModalContent').html(
         '<h5>Code:</h5><code>' +
           data.code +
-          '</code><br /><h5>Players Currently in My Room</h5>'
+          '</code><br /><h5>Игроки в моей комнате</h5>'
       );
       $('#playersNames').html(
         data.players.map(function (p) {
@@ -76,12 +126,12 @@ socket.on('joinRoomUpdate', function (data) {
   $('#startGameAreaDisconnectSituation').html(
     '<br /><button onclick=startGame(' +
       data.code +
-      ') type="submit" class= "waves-effect waves-light green darken-3 white-text btn-flat">Start Game</button >'
+      ') type="submit" class= "waves-effect waves-light green darken-3 white-text btn-flat">Начать игру</button >'
   );
   $('#joinModalContent').html(
     '<h5>' +
       data.host +
-      "'s room</h5><hr /><h5>Players Currently in Room</h5><p>You are now a host of this game.</p>"
+      "'s room</h5><hr /><h5>Players Currently in Room</h5><p>Теперь вы создатель игры.</p>"
   );
 
   $('#playersNamesJoined').html(
