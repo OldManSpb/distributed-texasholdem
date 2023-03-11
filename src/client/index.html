@@ -2,9 +2,8 @@
 <html>
 
 <head>
-	<link href="css/index.css" type="text/css" rel="stylesheet" media="screen,projection" />
 	<link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-	
+	<link href="css/index.css" type="text/css" rel="stylesheet" media="screen,projection" />
 	<meta property="og:image" content="./img/pokerBanner.png" />
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -29,8 +28,8 @@
 	<div id="gameDiv">
 		
 		<div class="col">
-			<div class="col s12 l7 center-align">
-				<div class="card green darken-2">
+			<div class="col s8 l7 center-align">
+				<div class="card green darken-2 col s8 l7">
 					<div class="card-content white-text">
 						<span id="table-title" class="card-title"></span>
 
@@ -97,15 +96,15 @@
 	</div>
 	<div id="hostModal" class="start-card modal amber lighten-5">
 		<div class="modal-content">
-			<h4>Создать игру</h4>
-			<div id="hostModalContent">
+			<h4 class="hd-start">Создать игру</h4>
+			<div id="hostModalContent" class="start-card-content">
 				<p>Введите своё имя, чтобы получить код, с помощью которого ваши друзья смогут присоедениться к игре.</p>
-				<div class="input-field col s12">
-					<label for="name">Имя</label>
-					<input type="text" name="name" id="hostName-field" required />
+				<div class=" input-field col s12">
+					<label  class="write-name-1" for="name">Имя</label>
+					<input class="write-name-2" type="text" name="name" id="hostName-field" required />
 				</div>
 				<button onclick=beginHost() type="submit"
-					class="waves-effect waves-light amber black-text btn-flat">Получить код</button>
+					class="cod-bot waves-effect waves-light amber black-text btn-flat">Получить код</button>
 			</div>
 			<div id="playersNames"></div>
 			<div id="startGameArea"></div>
@@ -116,23 +115,23 @@
 	</div>
 	</div>
 
-	<div id="joinModal" class="modal">
+	<div id="joinModal" class=" start-card modal">
 		<div class="modal-content">
-			<h4>Присоедениться к игре</h4>
-			<div id="joinModalContent">
+			<h4 class="hd-start">Присоедениться к игре</h4>
+			<div id="joinModalContent" class="start-card-content">
 				<p>Введить своё имя и код создателя игры:</p>
 				<div class="input-field col s12">
-					<label for="name">Имя</label>
-					<input type="text" name="name" id="joinName-field" required="required" />
+					<label for="name" class="write-name-1">Имя</label>
+					<input class="write" type="text" name="name" id="joinName-field" required="required" style="height: calc(2.5em + 4.75rem + 2px);" />
 				</div>
 				<div class="input-field col s12">
-					<label for="code">Код</label>
+					<label for="code" class="write-name-1">Код</label>
 					<input type="text" name="code" id="code-field" required="required" />
 				</div>
 				<button onclick=joinRoom() type="submit"
-					class="waves-effect waves-light amber black-text btn-flat">Присоедениться к игре</button>
+					class="cod-bot waves-effect waves-light amber black-text btn-flat">Присоедениться к игре</button>
 			</div>
-			<div id="playersNamesJoined"></div>
+			<div class="players-name" id="playersNamesJoined"></div>
 			<div id="startGameAreaDisconnectSituation"></div>
 		</div>
 		<div class="modal-footer">
@@ -182,15 +181,16 @@
 			<a href="#!" class="modal-close waves-effect waves-light btn-flat">CLOSE</a>
 		</div>
 	</div>
-	<footer class="page-footer ">
+	<footer class="page-footer light-green">
 		<div class="container center footer-c">
-			<h5>© 2023 - Kotovsky</h5><br><br>
+			<br><h5>© 2023 - Kotovsky</h5><br><br>
 	</footer>
 
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.5.0/socket.io.min.js"></script>
 	<script src="./main.js"> </script>
 	<script src="./js/materialize.min.js"></script>
+
 
 </body>
 

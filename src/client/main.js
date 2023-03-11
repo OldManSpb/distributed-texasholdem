@@ -1,4 +1,4 @@
-function Unloader(){
+/*function Unloader(){
 
   var o = this;
   
@@ -46,7 +46,7 @@ function Unloader(){
       {
           window.obUnloader = new Unloader();
       }
-  })
+  })*/
 
 $(document).ready(function () {
   $('#gameDiv').hide();
